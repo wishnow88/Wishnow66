@@ -1,0 +1,468 @@
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0b0d11;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0d11;
+}
+::-webkit-scrollbar-thumb {
+  background: #fbbf24;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* ===== UTILITY ===== */
+.text-yellow {
+  color: #fbbf24;
+}
+.bg-yellow {
+  background: #fbbf24;
+}
+.border-yellow {
+  border-color: #fbbf24;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -100px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pulse-btn {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ===== GLOW TEXT ===== */
+.glow-text {
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.3), 0 0 40px rgba(251, 191, 36, 0.1);
+}
+
+/* ===== NOTIFICATION TOAST ===== */
+.notification-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: slideDown 0.5s ease;
+}
+
+.toast-success {
+  background: #10b981;
+  color: #fff;
+}
+.toast-error {
+  background: #ef4444;
+  color: #fff;
+}
+.toast-warning {
+  background: #fbbf24;
+  color: #000;
+}
+.toast-info {
+  background: #3b82f6;
+  color: #fff;
+}
+
+/* ===== SERVICE CARDS ===== */
+.service-card {
+  background: linear-gradient(145deg, rgba(20, 24, 30, 0.9), rgba(10, 12, 16, 0.9));
+  border: 2px solid rgba(255, 215, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.service-card:hover {
+  border-color: #fbbf24;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(251, 191, 36, 0.15);
+}
+
+.service-card.selected {
+  border-color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
+}
+
+/* ===== PAYMENT OPTIONS ===== */
+.payment-option {
+  background: rgba(20, 24, 30, 0.6);
+  border: 2px solid rgba(255, 215, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.payment-option:hover {
+  border-color: #fbbf24;
+  transform: translateY(-3px);
+}
+
+.payment-option.selected {
+  border-color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+}
+
+/* ===== STATUS BADGE ===== */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.status-pending {
+  background: #fbbf24;
+  color: #000;
+}
+.status-paid {
+  background: #10b981;
+  color: #fff;
+}
+.status-expired {
+  background: #ef4444;
+  color: #fff;
+}
+.status-cancel {
+  background: #6b7280;
+  color: #fff;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: #0f1219;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  padding: 24px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ===== QR CODE ===== */
+.qr-image {
+  max-width: 200px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  padding: 8px;
+  background: #fff;
+  margin: 0 auto;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-gradient {
+  background: linear-gradient(135deg, #0b0d11 0%, #1a1a2e 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 16px;
+    margin: 16px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .service-card {
+    padding: 16px;
+  }
+  
+  .payment-option {
+    padding: 12px;
+  }
+}
+
+/* ===== PARTICLES ===== */
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #fbbf24;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatParticle linear infinite;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* ===== SECTION BORDER ===== */
+.section-border {
+  border-top: 1px solid rgba(251, 191, 36, 0.1);
+}
+
+/* ===== BADGE BEST SELLER ===== */
+.badge-best-seller {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #0b0d11;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+}
+
+/* ===== SERVICE BADGE ===== */
+.service-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 2px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ===== CARD GLOW ===== */
+.neon-glow {
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.2), 0 0 60px rgba(251, 191, 36, 0.1);
+}
+
+.neon-border {
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.1);
+}
+
+/* ===== FLOATING ANIMATIONS ===== */
+.float-1 {
+  animation: float1 3s ease-in-out infinite;
+}
+.float-2 {
+  animation: float2 3.5s ease-in-out infinite;
+}
+.float-3 {
+  animation: float3 4s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.1);
+  }
+}
+
+@keyframes float3 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(-10deg);
+  }
+}
+
+/* ===== GRADIENT BACKGROUND ===== */
+.bg-animate {
+  background: linear-gradient(-45deg, #0b0d11, #1a1a2e, #0b0d11, #1a1a2e);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ===== SHIMMER ===== */
+@keyframes shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b, #fbbf24);
+  background-size: 200% 200%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* ===== INFO BOX ===== */
+.info-box {
+  background: rgba(20, 24, 30, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.08);
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.info-box:hover {
+  border-color: rgba(255, 215, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ===== WHY CARD ===== */
+.why-card {
+  background: rgba(20, 24, 30, 0.5);
+  border: 1px solid rgba(255, 215, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.why-card:hover {
+  border-color: rgba(255, 215, 0, 0.2);
+  transform: scale(1.05);
+  background: rgba(251, 191, 36, 0.05);
+}
+
+/* ===== PRICE CARD ===== */
+.price-card {
+  background: rgba(20, 24, 30, 0.6);
+  border: 1px solid rgba(255, 215, 0, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.price-card:hover {
+  border-color: rgba(255, 215, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+/* ===== TRANSACTION ITEM ===== */
+.transaction-item {
+  border-left: 4px solid #fbbf24;
+  margin-bottom: 10px;
+  padding: 12px;
+  background: rgba(20, 24, 30, 0.5);
+  border-radius: 8px;
+}
+
+/* ===== PACKAGE BADGE ===== */
+.package-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(20, 24, 30, 0.8);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  margin: 2px;
+  font-size: 11px;
+  color: #fbbf24;
+}
